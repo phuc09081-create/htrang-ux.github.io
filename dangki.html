@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký CLB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            font-family: 'Quicksand', sans-serif;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        header {
+            width: 100%;
+            background: white;
+            border-radius: 60px;
+            padding: 15px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        header h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 40px;
+            background: #ecf0f1;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: #3498db;
+            color: white;
+        }
+        #dangki {
+            background: white;
+            border-radius: 40px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-family: 'Quicksand', sans-serif;
+            background: #f9f9f9;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .radio-group label { font-weight: normal; margin-left: 5px; }
+        .radio-group input { width: auto; margin-right: 5px; }
+        .submit-btn {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 60px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(52,152,219,0.4);
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(52,152,219,0.5);
+        }
+        @media (max-width: 700px) {
+            header { flex-direction: column; text-align: center; gap: 15px; }
+            .radio-group { flex-direction: column; align-items: flex-start; }
+            #dangki { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Đăng ký CLB</h1>
+            <nav>
+                <a href="clbxgiang"><i class="fas fa-home"></i> Trang chủ</a>
+            </nav>
+        </header>
+
+        <section id="dangki">
+            <h2>Đăng kí tham gia CLB</h2>
+            <form id="club-registration" onsubmit="event.preventDefault(); window.location.href='thanhcong.html';">
+                <div class="form-group">
+                    <label for="hoten">Họ và tên</label>
+                    <input type="text" id="hoten" name="hoten" required>
+                </div>
+                <div class="form-group">
+                    <label for="ngaysinh">Ngày sinh</label>
+                    <input type="date" id="ngaysinh" name="ngaysinh" required>
+                </div>
+                <div class="form-group">
+                    <label>Giới tính</label>
+                    <div class="radio-group">
+                        <div><input type="radio" id="nam" name="gioitinh" value="Nam" required> <label for="nam">Nam</label></div>
+                        <div><input type="radio" id="nu" name="gioitinh" value="Nữ"> <label for="nu">Nữ</label></div>
+                        <div><input type="radio" id="khac" name="gioitinh" value="Khác"> <label for="khac">Khác</label></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lop">Lớp</label>
+                    <input type="text" id="lop" name="lop" required>
+                </div>
+                <div class="form-group">
+                    <label for="sdt">Số điện thoại</label>
+                    <input type="tel" id="sdt" name="sdt" required>
+                </div>
+                <div class="form-group">
+                    <label for="facebook">Link Facebook</label>
+                    <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/...">
+                </div>
+                <div class="form-group">
+                    <label for="clb">Câu lạc bộ muốn tham gia</label>
+                    <select id="clb" name="clb" required>
+                        <option value="">-- Chọn CLB --</option>
+                        <option value="CLB Hát">CLB Hát</option>
+                        <option value="CLB Vẽ">CLB Vẽ</option>
+                        <option value="CLB Múa">CLB Múa</option>
+                        <option value="CLB Bóng chuyền">CLB Bóng chuyền</option>
+                        <option value="CLB Tình nguyện">CLB Tình nguyện</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nangkhieu">Năng khiếu/ Kinh nghiệm (nếu có)</label>
+                    <textarea id="nangkhieu" name="nangkhieu" rows="4" placeholder="Chia sẻ về năng khiếu hoặc kinh nghiệm của bạn..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Gửi đăng kí</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu lạc bộ trường học</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            font-family: 'Quicksand', sans-serif;
+            padding: 30px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header */
+        header {
+            width: 100%;
+            max-width: 1300px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 60px;
+            padding: 15px 30px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-left img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 10px 22px;
+            border-radius: 40px;
+            background: white;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid transparent;
+        }
+
+        nav ul li:hover {
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        /* Nút Đăng ký tham gia tại đây */
+        .register-link {
+            width: 100%;
+            max-width: 1300px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .register-link a {
+            display: inline-block;
+            background: linear-gradient(45deg, #e67e22, #f39c12);
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            padding: 18px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(230, 126, 34, 0.4);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .register-link a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(230, 126, 34, 0.5);
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+        }
+
+        .register-link i {
+            margin-left: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* Club Grid */
+        .club-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .club-card {
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .club-card:hover {
+            transform: scale(1.03) translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Ảnh minh họa cho CLB */
+        .card-img {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .club-card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 30px 25px 30px;
+            background: white;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #2c3e50, #2980b9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+        }
+
+        .card-content p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .club-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #3498db;
+            text-align: right;
+            opacity: 0.7;
+        }
+
+        /* Form đăng kí */
+        #dangki {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 40px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        #dangki h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-family: 'Quicksand', sans-serif;
+            transition: border 0.3s;
+            background: #f9f9f9;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .radio-group label {
+            display: inline;
+            margin-left: 5px;
+            font-weight: normal;
+        }
+
+        .radio-group input {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(52, 152, 219, 0.5);
+        }
+
+        .success-message {
+            background: #2ecc71;
+            color: white;
+            padding: 30px;
+            border-radius: 40px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: none;
+        }
+
+        .success-message i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                border-radius: 30px;
+                padding: 20px;
+            }
+
+            .header-left {
+                flex-direction: column;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            .register-link a {
+                font-size: 1.2rem;
+                padding: 14px 30px;
+            }
+
+            #dangki {
+                padding: 30px 20px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <!-- Logo trường / CLB (thay ảnh sau) -->
+            <img src="z7566696633800_eb5e357cac44cb5424bf000d9e2f471b.jpg" alt="Logo trường" width="60" height="60">
+            <h1>Trang chủ</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#clb-hat">CLB Hát</a></li>
+                <li><a href="#clb-ve">CLB Vẽ</a></li>
+                <li><a href="#clb-mua">CLB Múa</a></li>
+                <li><a href="#clb-bong-chuyen">CLB Bóng chuyền</a></li>
+                <li><a href="#clb-tinh-nguyen">CLB Tình Nguyện</a></li>
+                <li><a href="dangky.html">Đăng Kí</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="club-grid">
+        <!-- CLB Hát -->
+        <article class="club-card" id="clb-hat">
+            <div class="card-img">
+                <img src="z7566696611236_58d069fb5bff7b3e9854528bd1183766.jpg" alt="CLB Hát" width="400" height="250">
+            </div>
+            <div class="card-content">
+                <h2>CLB Hát</h2>
+                <p>Nơi hội tụ kết nối những giọng ca đam mê âm nhạc. Tại đây các thành viên được luyện thanh, biểu diễn và lan tỏa cảm xúc tích cực qua từng giai điệu. CLB Hát mang đến không gian luyện tập, biểu diễn và lan tỏa cảm xúc qua từng giai điệu.</p>
+            </div>
+        </article>
+
+        <!-- CLB Vẽ -->
+        <article class="club-card" id="clb-ve">
+            <div class="card-img">
+                <img src="z7566696615216_acfbe2e761a6691f8b11fe62d3c2a37b.jpg" alt="CLB Vẽ" width="400" height="250">
+            </div>
+            <div class="card-content">
+                <h2>CLB Vẽ</h2>
+                <p>Nơi những ý tưởng bay xa và cảm xúc được gửi gắm qua từng nét cọ. Tại đây, các thành viên được rèn luyện kỹ năng, phát triển năng khiếu hội họa và tư duy sáng tạo. Đến với CLB Vẽ, bạn không chỉ học cách vẽ mà còn học cách nhìn thế giới bằng đôi mắt nghệ thuật.</p>
+            </div>
+        </article>
+
+        <!-- CLB Múa -->
+        <article class="club-card" id="clb-mua">
+            <div class="card-img">
+                <img src="z7566696637214_15933f6fab8ce1475b6f0452581a05a8.jpg" alt="CLB Múa" width="400" height="250">
+            </div>
+            <div class="card-content">
+                <h2>CLB Múa</h2>
+                <p>Nơi sân chơi dành cho những bạn yêu thích chuyển động và biểu diễn. Mỗi bước nhảy là một câu chuyện, mỗi sân khấu là một cơ hội bứt phá. CLB Múa giúp bạn tự tin, linh hoạt và cháy hết mình với đam mê.</p>
+            </div>
+        </article>
+
+        <!-- CLB Bóng chuyền -->
+        <article class="club-card" id="clb-bong-chuyen">
+            <div class="card-img">
+                <img src="z7566696628827_a4adb6c4690297660c6c5a1c6a74a8cd.jpg" alt="CLB Bóng chuyền" width="400" height="250">
+            </div>
+            <div class="card-content">
+                <h2>CLB Bóng chuyền</h2>
+                <p>Nơi môi trường rèn luyện thể lực, sự nhanh nhẹn và tinh thần đồng đội. Không chỉ là những pha bóng đẹp mắt, đây còn là nơi rèn luyện ý chí, thể lực và sự phối hợp ăn ý giữa các thành viên gắn kết qua từng trận đấu sôi nổi.</p>
+            </div>
+        </article>
+
+        <!-- CLB Tình nguyện -->
+        <article class="club-card" id="clb-tinh-nguyen">
+            <div class="card-img">
+                <img src="z7566696616585_4455c20131a9499a0cbc1130ab39f6a1.jpg" alt="CLB Tình nguyện" width="400" height="250">
+            </div>
+            <div class="card-content">
+                <h2>CLB Tình nguyện</h2>
+                <p>Nơi lan tỏa yêu thương và sẻ chia. Các hoạt động thiện nguyện, hỗ trợ cộng đồng giúp các thành viên trưởng thành hơn và sống có trách nhiệm với xã hội. Mỗi hoạt động là một trải nghiệm đáng nhớ và đầy ý nghĩa.</p>
+            </div>
+        </article>
+    </main>
+    
+    <!-- Nút đăng ký nổi bật -->
+    <div class="register-link">
+        <a href="dangki.html">
+            Đăng ký tham gia tại đây <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    <script>
+        document.getElementById('club-registration').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn reload trang
+
+            // Ẩn form
+            document.getElementById('register-form').style.display = 'none';
+            // Hiển thị thông báo thành công
+            document.getElementById('success-message').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
